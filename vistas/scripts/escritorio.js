@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	cargarProductos();
+	
+	
 		
 	$.post("../ajax/escritorio.php?op=selectFamilias", function(r){
 		$("#familias").html(r);
@@ -11,6 +13,10 @@ $(document).ready(function(){
 		
 	})
 
+	$("#cantidad").change(function(){
+		sumaProductos();
+	})
+
 
 })
 
@@ -18,6 +24,14 @@ $(document).ready(function(){
 	
 }
  */
+
+function sumaProductos(){	
+	suma_productos = 0;
+	suma_productos =parseFloat( suma_productos) +parseFloat( $("#cantidad").val())
+	//console.log(suma_productos)
+	$("#order_quantity").val(suma_productos)
+
+}
 function cargarProductos(){
 		$.ajax({
 			type:"POST",
@@ -36,18 +50,13 @@ function mostrarModal(){
 contr=2;
 	function agregarLinea(){
 		var fila='<tr class="filasr" id="filar'+contr+'">'+
-
 		'<td scope="row" id="numRow">'+contr+'</td>'+
-
-		'<td> <div class="form-group col-md-12 col-sm-3">'+
-		'<input type="number" class="form-control" id="inputCant" name="cant[]" placeholder="0"> </div> </td>'+
-
-		'<td> <div class="form-group col-md-12 col-sm-3">'+
-		'<input type="text" class="form-control" id="inputDesc" name="produc[]" placeholder="Producto"></div></td>'+
-
-		'<td> <div class="form-group col-md-12 col-sm-3">'+
-		'<input type="text" class="form-control" id="inputPres" name="presen[]" placeholder="Presentacion"></div></td>'+
-
+		'<td> <div class="mb-3 form-group">'+
+		'<select name="familias" id="familias" class="form-control"></select></div></td>'+
+		'<td> <div class="mb-3 form-group">'+
+		'<select name="productos" id="productos" class="form-control"></select></div></td>'+
+		'<td> <div class="mb-3 form-group">'+
+		'<input type="number" class="form-control" id="cantidad" name="cantidad"></div></td>'+
 		'<td> '+
 		'<button type="button" class="btn btn-sm btn-danger"  onClick="eliminarLinea('+contr+')"><i class="fa fa-trash"></i></button></td>'+
 		'</tr> ';

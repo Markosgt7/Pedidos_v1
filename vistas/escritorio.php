@@ -40,7 +40,7 @@ if ($_SESSION['pedidos']==1)
                                   <div class="panel-body">
                                     <form action="">
                                       <div class="mb-3 form-group">
-                                        <div class="col-md-6 col-sm-12">
+                                        <div class="col-md-3 col-sm-12">
                                           <label for="cliente">Código
                                             <input type="text" placeholder="codigo">
                                           </label>
@@ -52,9 +52,16 @@ if ($_SESSION['pedidos']==1)
                                         </div>                                       
                                       </div>
                                       <div class="mb-3 form-group">
-                                        <div class="col-md-6 col-sm-12">
+                                        <div class="col-md-4 col-sm-12">
                                             <label for="nombreCliente">Cliente
                                               <input type="text" name="nombreCliente" placeholder="Cliente">
+                                            </label>                                         
+                                        </div>
+                                      </div>
+                                      <div class="mb-3 form-group">
+                                        <div class="col-md-5 col-sm-12">
+                                            <label for="nombreCliente">Dirección
+                                              <input type="text" name="Cliente" placeholder="Dirección">
                                             </label>                                         
                                         </div>
                                       </div>
@@ -65,7 +72,7 @@ if ($_SESSION['pedidos']==1)
                                 </div>
                                 <!--fin pedido-->
                                 <!--boton agregar linea-->
-                                <div class="col-md-2">
+                                <div class="col-md-5 col-sm-12" >
                                   <label for="">Nueva Línea </label>
                                   <span>
                                   
@@ -74,10 +81,11 @@ if ($_SESSION['pedidos']==1)
                                     </button>
                                   </span>
                                 </div>
-                                <div class="col-md-8">
-                                  <label for="total">Total Producto</label>
-                                  <input type="text"  value="0" name="total" readonly>
+                                <div class="col-md-7 col-sm-12">
+                                  <label for="total">Cantidad</label>
+                                  <input type="text"  value="0" name="order_quantity" id="order_quantity" readonly>
                                 </div>
+                               
                                 <!--inicio de tabla-->
 
                                   <table class="table table-striped table-sm" id="lineas" >
@@ -95,24 +103,19 @@ if ($_SESSION['pedidos']==1)
                                         <td scope="row" id="numRow">1</td>
                                         <td>
                                             <div class="mb-3 form-group">                                           
-                                                <select name="familias" id="familias" class="form-control">
-                                                  <option value="0">Seleccione..</option>
+                                                <select name="familias" id="familias" class="form-control">                                                  
                                                 </select>     
-                                            </div>
-                                                    
+                                            </div>                                                    
                                         </td>
                                         <td>
                                             <div class="mb-3 form-group">
-                                              <select name="productos" id="productos" class="form-control">
-                                                  <option value="0">Seleccione..</option>
+                                              <select name="productos" id="productos" class="form-control">                                                  
                                               </select>                                     
                                             </div>
                                         </td>
                                         <td>
                                             <div class="mb-3 form-group">
-                                              <select name="presentacion" id="presentacion" class="form-control">
-                                                  <option value="0">Seleccione..</option>
-                                              </select>                                                                                        
+                                              <input type="number" class="form-control" name="cantidad" id="cantidad" placeholder="cantidad"  required>                                                                                        
                                             </div>
                                         </td>
                                         <td><button type="button" class="btn btn-sm btn-danger" onclick="eliminarLinea(1)"><i class="fa fa-trash"></i></button></td>
