@@ -11,42 +11,40 @@ Class Usuario
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($apaterno,$amaterno,$nombre,$fecha_nacimiento,$sexo,$estado_civil,$tipo_documento,$num_documento,$direccion,$telefono,$email,$ocupacion,$cargo,$especialidad,$login,$clave,$permisos)
+	public function insertar($apaterno,$nombre,$num_documento,$telefono,$email,$cargo,$especialidad,$login,$clave,$permisos)
 	{
 		//Insertamos primero a la persona
-		$sql1="INSERT INTO persona (apaterno,amaterno,nombre,fecha_nacimiento,sexo,estado_civil,tipo_documento,num_documento,direccion,
-		telefono,email,ocupacion)
-		VALUES ('$apaterno','$amaterno','$nombre','$fecha_nacimiento','$sexo','$estado_civil','$tipo_documento','$num_documento','$direccion','$telefono','$email','$ocupacion')";
-		$idpersonanew=ejecutarConsulta_retornarID($sql1);
+		/* $sql1="INSERT INTO persona (apaterno,nombre) VALUES ('$apaterno','$nombre')";
+		$idpersonanew=ejecutarConsulta_retornarID($sql1); */
 
+		$sql1="SELECT MAX(idusuario) + 1 FROM usuario";
+		$idpersonanew=ejecutarConsultaSimpleFila($sql1);
 
-		$sql2="INSERT INTO usuario (idusuario,cargo,especialidad,login,clave,condicion)
-		VALUES ('$idpersonanew','$cargo','$especialidad','$login','$clave','1')";
+		$sql2="INSERT INTO usuario (idusuario,cargo,especialidad,login,clave,condicion,nombre,apellido,num_documento,email,telefono)
+		VALUES ('$idpersonanew','$cargo','$especialidad','$login','$clave','1','$nombre','$apaterno','$num_documento','$email','$telefono')";
 		//return ejecutarConsulta($sql);
-		ejecutarConsulta_retornarID($sql2);
+		ejecutarConsultaSimpleFila($sql2);
 
 		$num_elementos=0;
 		$sw=true;
 
-		while ($num_elementos < count($permisos))
+		/* while ($num_elementos < count($permisos))
 		{
 			$sql_detalle = "INSERT INTO usuario_permiso(idusuario, idpermiso) VALUES('$idpersonanew', '$permisos[$num_elementos]')";
 			ejecutarConsulta($sql_detalle) or $sw = false;
 			$num_elementos=$num_elementos + 1;
-		}
+		} */
 
 		return $sw;
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($idpersona,$apaterno,$amaterno,$nombre,$fecha_nacimiento,$sexo,$estado_civil,$tipo_documento,$num_documento,$direccion,$telefono,$email,$ocupacion,$cargo,$especialidad,$login,$clave,$permisos)
+	public function editar($idpersona,$apaterno,$nombre,$num_documento,$telefono,$email,$cargo,$especialidad,$login,$clave,$permisos)
 	{
-		$sql1="UPDATE persona SET apaterno='$apaterno',amaterno='$amaterno', nombre='$nombre',
-		fecha_nacimiento='$fecha_nacimiento', sexo='$sexo',estado_civil='$estado_civil',tipo_documento='$tipo_documento',
-		num_documento='$num_documento',direccion='$direccion',telefono='$telefono',email='$email',ocupacion='$ocupacion' WHERE idpersona='$idpersona'";
+		$sql1="UPDATE persona SET apaterno='$apaterno', nombre='$nombre' WHERE idpersona='$idpersona'";
 		ejecutarConsulta($sql1);
 
-		$sql2="UPDATE usuario SET cargo='$cargo',especialidad='$especialidad',login='$login', clave='$clave' WHERE idusuario='$idpersona'";
+		$sql2="UPDATE usuario SET cargo='$cargo',especialidad='$especialidad',login='$login', clave='$clave', apellido='$apaterno', nombre='$nombre',num_documento='$num_documento',telefono='$telefono',email='$email'  WHERE idusuario='$idpersona'";
 		ejecutarConsulta($sql2);
 
 
@@ -106,7 +104,7 @@ Class Usuario
 	//Función para verificar el acceso al sistema
 	public function verificar($login,$clave)
     {
-    	$sql="SELECT u.idusuario,u.nombre,u.num_documento,u.telefono,u.email,u.cargo,u.login FROM usuario u  WHERE u.login='$login' AND u.clave='$clave' AND u.condicion='1'"; 
+    	$sql="SELECT u.idusuario,u.nombre, u.apellido, u.num_documento,u.telefono,u.email,u.cargo,u.login FROM usuario u  WHERE u.login='$login' AND u.clave='$clave' AND u.condicion='1'"; 
     	return ejecutarConsulta($sql);  
     }
 }

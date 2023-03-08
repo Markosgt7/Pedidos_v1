@@ -10,7 +10,6 @@ function init(){
 		guardaryeditar(e);	
 	})
 
-	$("#imagenmuestra").hide();
 	//Mostramos los permisos
 	$.post("../ajax/usuario.php?op=permisos&id=",function(r){
 	        $("#permisos").html(r);
@@ -111,6 +110,7 @@ function guardaryeditar(e)
 
 	    success: function(datos)
 	    {                    
+			  
 	          bootbox.alert(datos);	          
 	          mostrarform(false);
 	          tabla.ajax.reload();
@@ -128,9 +128,7 @@ function mostrar(idusuario)
 		mostrarform(true);
 
 		$("#nombre").val(data.nombre);
-		$("#apaterno").val(data.apaterno);
-		$("#amaterno").val(data.amaterno);
-		$("#fecha_nacimiento").val(data.fecha_nacimiento);
+		$("#apellido").val(data.apellido);
 		$("#num_documento").val(data.num_documento);
 		$("#telefono").val(data.telefono);
 		$("#email").val(data.email);
@@ -139,6 +137,8 @@ function mostrar(idusuario)
 		$("#login").val(data.login);
 		$("#idusuario").val(data.idusuario);
 		$("#idpersona").val(data.idpersona);
+		//$("#amaterno").val(data.amaterno);
+		//$("#fecha_nacimiento").val(data.fecha_nacimiento);
 		//$("#sexo").val(data.sexo);
 		//$("#sexo").selectpicker('refresh');
 		//$("#estado_civil").val(data.estado_civil);

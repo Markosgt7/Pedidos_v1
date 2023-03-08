@@ -66,7 +66,7 @@ if ($_SESSION['administracion']==1)
                           </div>
                           <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                             <label>Apellido(*):</label>
-                            <input type="text" class="form-control" name="apaterno" id="apaterno" maxlength="30" placeholder="apellido Paterno" required="">
+                            <input type="text" class="form-control" name="apellido" id="apellido" maxlength="30" placeholder="apellido Paterno" required="">
                           </div>
                           <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                             <label>Número DPI(*):</label>
@@ -81,10 +81,7 @@ if ($_SESSION['administracion']==1)
                             <label>Email:</label>
                             <input type="text" class="form-control" name="email" id="email" maxlength="50" placeholder="Email">
                           </div>
-                          <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <label>Ocupacion:</label>
-                            <input type="text" class="form-control" name="ocupacion" id="ocupacion" maxlength="30" placeholder="Ocupacion">
-                          </div>
+                         
                           <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                             <label>Cargo:</label>
                             <input type="text" class="form-control" name="cargo" id="cargo" maxlength="20" placeholder="Cargo">

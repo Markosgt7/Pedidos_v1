@@ -7,22 +7,22 @@ $usuario=new Usuario();
 
 $idusuario=isset($_POST["idusuario"])? limpiarCadena($_POST["idusuario"]):"";
 $idpersona=isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):"";
+$apaterno=isset($_POST["apellido"])? limpiarCadena($_POST["apellido"]):"";
 $nombre=isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
-$apaterno=isset($_POST["apaterno"])? limpiarCadena($_POST["apaterno"]):"";
-$amaterno=isset($_POST["amaterno"])? limpiarCadena($_POST["amaterno"]):"";
-$fecha_nacimiento=isset($_POST["fecha_nacimiento"])? limpiarCadena($_POST["fecha_nacimiento"]):"";
-$sexo=isset($_POST["sexo"])? limpiarCadena($_POST["sexo"]):"";
-$estado_civil=isset($_POST["estado_civil"])? limpiarCadena($_POST["estado_civil"]):"";
-$tipo_documento=isset($_POST["tipo_documento"])? limpiarCadena($_POST["tipo_documento"]):"";
 $num_documento=isset($_POST["num_documento"])? limpiarCadena($_POST["num_documento"]):"";
-$direccion=isset($_POST["direccion"])? limpiarCadena($_POST["direccion"]):"";
 $telefono=isset($_POST["telefono"])? limpiarCadena($_POST["telefono"]):"";
 $email=isset($_POST["email"])? limpiarCadena($_POST["email"]):"";
-$ocupacion=isset($_POST["ocupacion"])? limpiarCadena($_POST["ocupacion"]):"";
 $cargo=isset($_POST["cargo"])? limpiarCadena($_POST["cargo"]):"";
 $especialidad=isset($_POST["especialidad"])? limpiarCadena($_POST["especialidad"]):"";
 $login=isset($_POST["login"])? limpiarCadena($_POST["login"]):"";
 $clave=isset($_POST["clave"])? limpiarCadena($_POST["clave"]):"";
+//$amaterno=isset($_POST["amaterno"])? limpiarCadena($_POST["amaterno"]):"";
+//$fecha_nacimiento=isset($_POST["fecha_nacimiento"])? limpiarCadena($_POST["fecha_nacimiento"]):"";
+//$sexo=isset($_POST["sexo"])? limpiarCadena($_POST["sexo"]):"";
+//$estado_civil=isset($_POST["estado_civil"])? limpiarCadena($_POST["estado_civil"]):"";
+//$tipo_documento=isset($_POST["tipo_documento"])? limpiarCadena($_POST["tipo_documento"]):"";
+//$direccion=isset($_POST["direccion"])? limpiarCadena($_POST["direccion"]):"";
+//$ocupacion=isset($_POST["ocupacion"])? limpiarCadena($_POST["ocupacion"]):"";
 
 switch ($_GET["op"]){
 	case 'guardaryeditar':
@@ -30,13 +30,19 @@ switch ($_GET["op"]){
 		
 		//Hash SHA256 en la contraseña
 		$clavehash=hash("SHA256",$clave);
-
+		//paso el valor de idpersona a idusuario
+		/* 
 		if (empty($idusuario)){
-			$rspta=$usuario->insertar($apaterno,$amaterno,$nombre,$fecha_nacimiento,$sexo,$estado_civil,$tipo_documento,$num_documento,$direccion,$telefono,$email,$ocupacion,$cargo,$especialidad,$login,$clavehash,$_POST['permiso']);
-			echo $rspta ? "Usuario registrado" : "No se pudieron registrar todos los datos del usuario";
+			$rspta=$usuario->insertar($apaterno,$nombre,$num_documento,$telefono,$email,$cargo,$especialidad,$login,$clavehash,$_POST['permiso']);
+			echo $rspta ? "Usuario registrado" : "No se pudo registrar el usuario";
+		} */
+		if(empty($idusuario)){
+			$rspta=$usuario->insertar($apaterno,$nombre,$num_documento,$telefono,$email,$cargo,$especialidad,$login,$clavehash,$_POST['permiso']);
+			echo $rspta ? "usuario registrado": "Nose pudo registrar el usuario";
 		}
 		else {
-			$rspta=$usuario->editar($idpersona,$apaterno,$amaterno,$nombre,$fecha_nacimiento,$sexo,$estado_civil,$tipo_documento,$num_documento,$direccion,$telefono,$email,$ocupacion,$cargo,$especialidad,$login,$clavehash,$_POST['permiso']);
+			$idpersona=$idusuario;
+			$rspta=$usuario->editar($idpersona,$apaterno,$nombre,$num_documento,$telefono,$email,$cargo,$especialidad,$login,$clavehash,$_POST['permiso']);
 			echo $rspta ? "Usuario actualizado" : "Usuario no se pudo actualizar";
 		}
 	break;
@@ -68,8 +74,8 @@ switch ($_GET["op"]){
  					' <button title="Desactivar" class="btn btn-danger" onclick="desactivar('.$reg->idusuario.')"><i class="fa fa-close"></i></button>':
  					'<button title="Editar" class="btn btn-warning" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.
  					' <button title="Activar" class="btn btn-primary" onclick="activar('.$reg->idusuario.')"><i class="fa fa-check"></i></button>', 				
- 				"1"=>$reg->apellido,
- 				"2"=>$reg->nombre,
+ 				"1"=>$reg->nombre,
+ 				"2"=>$reg->apellido,
  				"3"=>$reg->num_documento,
  				"4"=>$reg->telefono,
  				"5"=>$reg->cargo,
@@ -130,6 +136,7 @@ switch ($_GET["op"]){
 	        //Declaramos las variables de sesión
 	        $_SESSION['idusuario']=$fetch->idusuario;
 	        $_SESSION['nombre']=$fetch->nombre;
+			$_SESSION['apellido']=$fetch->apellido;
 	        $_SESSION['login']=$fetch->login;
 
 	        //Obtenemos los permisos del usuario

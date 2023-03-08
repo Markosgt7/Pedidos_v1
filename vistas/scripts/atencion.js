@@ -24,13 +24,7 @@ function init(){
 	});
 }
 
-//$("#idservicio").change(mostrarValores);
 
-//function mostrarValores()
-  //{
-    //datosServicio=document.getElementById('idservicio').value.split('_');
-    //$("#costo").val(datosServicio[2]);
-  //}
 
 //Función limpiar
 function limpiar()

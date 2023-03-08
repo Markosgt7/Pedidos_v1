@@ -58,7 +58,7 @@ if (strlen(session_id()) < 1)
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   
-                  <span class="hidden-xs"><?php echo $_SESSION['nombre']; ?></span>
+                  <span class="hidden-xs"><?php echo strtoupper($_SESSION['nombre']).' '; ?><?php echo strtoupper($_SESSION['apellido']); ?></span>
                 </a>
                 <ul class="dropdown-menu">
                  

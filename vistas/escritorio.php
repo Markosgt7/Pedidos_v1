@@ -28,64 +28,124 @@ if ($_SESSION['pedidos']==1)
                     
                     <!-- /.box-header -->
                     <!-- centro -->
+                    
                     <div class="panel-body">
                           <div class="row">
-                           
-                               
+                          <!--nuevo codigo marcos--> 
+                          <div class="panel panel-primary">
+                              <div class="panel-body">
+                                <!--encabezado pedido-->
+                                <div class="row"> 
+
+                                  <div class="panel-body">
+                                    <form action="">
+                                      <div class="mb-3 form-group">
+                                        <div class="col-md-6 col-sm-12">
+                                          <label for="cliente">Código
+                                            <input type="text" placeholder="codigo">
+                                          </label>
+                                          <span>
+                                            <button type="button" class="btn btn-sm" onClick="mostrarModal()">
+                                              <i class="fa fa-search"></i>
+                                            </button>
+                                          </span>
+                                        </div>                                       
+                                      </div>
+                                      <div class="mb-3 form-group">
+                                        <div class="col-md-6 col-sm-12">
+                                            <label for="nombreCliente">Cliente
+                                              <input type="text" name="nombreCliente" placeholder="Cliente">
+                                            </label>                                         
+                                        </div>
+                                      </div>
+
+
+                                    </form>
+                                  </div>
+                                </div>
+                                <!--fin pedido-->
+                                <!--boton agregar linea-->
+                                <div class="col-md-2">
+                                  <label for="">Nueva Línea </label>
+                                  <span>
+                                  
+                                    <button class="btn btn-xs btn-success" onclick="agregarLinea()">
+                                      <i class="fa fa-plus"></i>
+                                    </button>
+                                  </span>
+                                </div>
+                                <div class="col-md-8">
+                                  <label for="total">Total Producto</label>
+                                  <input type="text"  value="0" name="total" readonly>
+                                </div>
+                                <!--inicio de tabla-->
+
+                                  <table class="table table-striped table-sm" id="lineas" >
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Item</th>
+                                        <th scope="col">Familia</th>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Borrar</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr class="filasr" id="filar">
+                                        <td scope="row" id="numRow">1</td>
+                                        <td>
+                                            <div class="mb-3 form-group">                                           
+                                                <select name="familias" id="familias" class="form-control">
+                                                  <option value="0">Seleccione..</option>
+                                                </select>     
+                                            </div>
+                                                    
+                                        </td>
+                                        <td>
+                                            <div class="mb-3 form-group">
+                                              <select name="productos" id="productos" class="form-control">
+                                                  <option value="0">Seleccione..</option>
+                                              </select>                                     
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="mb-3 form-group">
+                                              <select name="presentacion" id="presentacion" class="form-control">
+                                                  <option value="0">Seleccione..</option>
+                                              </select>                                                                                        
+                                            </div>
+                                        </td>
+                                        <td><button type="button" class="btn btn-sm btn-danger" onclick="eliminarLinea(1)"><i class="fa fa-trash"></i></button></td>
+                                      </tr>                                  
+                                    </tbody>
+                                  </table>
+
+                                <!--observaciones-->
+                                <div class="row">
+                                  <form action="">                                  
+                                    <div class="form-group col-md-12 col-sm-12 col-lg-12">
+                                        <label for="description">Observaciones:
+                                          <input type="text" class="form-control">
+                                        </label>
+                                    </div>
+                                  </form>
+                                </div>
+
+
+                                <div class="row">
+                                  <button type="button" class="btn btn-primary btn-sm">Enviar</button>
+                                  <button type="button" class="btn btn-danger btn-sm">Cancelar</button>
+                                </div>
+
+
+                              </div>
+                            </div>
+                          <!--fin codigo marcos--> 
+                            
                           
                         
 
-                      
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="panel panel-primary">
-                                 <div class="panel-body">
-                                  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-4">
-                                    <h3>Detalle del pedido</h3>
-                                    <div class="row">
-                                      <div class="col-md-2 col-sm-12">
-                                        <label for="cliente">Cliente</label>
-                                        <select name="cliente" id="">
-                                          <option value="uno">Seleccione</option>
-                                          <option value="uno">Cliente Uno</option>
-                                          <option value="uno">cliente Dos</option>
-                                          
-                                        </select>  
-                                      </div>
-                                      <div class="col-md-8">
-                                        <label for="cliente">Codigo Cliente</label>
-                                          <input type="text" value="12345678">
-                                      </div>
-                                    </div>
-                                    <label>Línea <button type="button" class="btn btn-sm btn-success" onclick="agregarLinea()"><i class="fa fa-plus"></i></button></label>
-                                    <table id="lineas" class="table table-responsive">
-                                        <thead style="background-color: #A9D0F5;">
-                                          <tr>
-                                            <th>Borrar</th>
-                                            <th>Cantidad</th>
-                                            <th>Descripción</th>
-                                            <th>Producto</th>
-                                            
-                                          </tr>
-                                          <tbody id="tablabodyrecetas">
-                                            <tr class="filasr" id="filar0">
-                                              <td><button type="button" class="btn btn-sm btn-danger" onclick="eliminarLinea(1)"><i class="fa fa-trash"></i></button></td>
-                                              <td><input type="text" class="control" name="cantidad[]" required=""></td>
-                                              <td><input type="text" class="control" name="descripcion[]"></td>
-                                              <td><input type="text" class="control" name="producto[]"></td>
-                                              
-                                            </tr>     
-                                          </tbody>
-                                        </thead>
-                                      </table>
-                                      <div class="form-group col-lg-4  col-md-4 col-sm-12 col-xs-12" id="guardar">
-                                        <button class="btn btn-primary" type="submit" id="btnGuardarP"><i class="fa fa-save"></i> Guardar</button>
-                                        <button class="btn btn-danger" id="btnCancelarP" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>                            
-                                      </div>
-                                  </div>   
-                                 </div>
-                               </div>
-                          </div>
-                          
+                     
 
                           
                         </div>
@@ -98,6 +158,9 @@ if ($_SESSION['pedidos']==1)
 
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
+    <?php include '../vistas/buscaModal.php';?>
+
+
 <?php
 }
 else
