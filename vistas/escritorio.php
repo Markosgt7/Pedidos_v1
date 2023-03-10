@@ -49,36 +49,29 @@ if ($_SESSION['pedidos']==1)
                                  
                                         <div class="col-xs-12 col-sm-8 col-lg-6">
                                             <label for="nombreCliente">Cliente</label> 
-                                              <input type="text" name="nombre_cliente" id="nombre_cliente" placeholder="Cliente" class="form-control">                                                                                    
+                                              <input type="text" name="nombre_cliente" id="nombre_cliente" placeholder="Cliente" class="form-control" readonly>                                                                                    
                                         </div>
-                                  </div>
-                                
-
-
-
-
-
+                                  </div>                         
                                   <div class="form-group row">                                  
                                     <div class="col-xs-12">                                        
                                           <label for="direccion">Dirección</label>
-                                          <input type="text" name="Cliente" class="form-control" placeholder="Dirección">                                            
+                                          <input type="text" id="direccion_cliente" name="direccion_liente" class="form-control" placeholder="Dirección" readonly>                                            
                                     </div>
                                   </div>
                                 
                                 <!--fin pedido-->
                                 <!--boton agregar linea-->
-                                <div class="col-md-5 col-sm-12" >
+                                <div class="col-lg-10 col-md-10 col-sm-12" >
                                   <label for="">Nueva Línea </label>
-                                  <span>
-                                  
+                                  <span>                                  
                                     <button class="btn btn-xs btn-success" onclick="agregarLinea()">
                                       <i class="fa fa-plus"></i>
                                     </button>
                                   </span>
                                 </div>
-                                <div class="col-md-7 col-sm-12">
+                                <div class="col-lg-2 col-md-2 col-sm-12">
                                   <label for="total">Cantidad</label>
-                                  <input type="text"  value="0" name="order_quantity" id="order_quantity" readonly>
+                                  <input type="text"  value="0" name="order_quantity" id="order_quantity" class="form-control"  readonly>
                                 </div>
                                
                                 <!--inicio de tabla-->

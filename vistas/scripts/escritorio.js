@@ -13,7 +13,8 @@ $(document).ready(function(){
 		sumaProductos();
 	})
 	$("#codigo_cliente").change(function(){
-		alert("cliente cambio");	
+		 cargarNombreCliente();
+		 	
 	})
 
 
@@ -26,6 +27,28 @@ function cargarCliente(){
 		$("#codigo_cliente").html(r)
 		
 	})
+}
+
+function cargarNombreCliente(){
+	$.ajax({
+		type:"POST",
+		url:"../../ajax/escritorio.php?op=selectNombreCliente",
+		data:"codigo_cliente="+$("#codigo_cliente").val(),
+		success:function(r){
+			$("#nombre_cliente").val(r);
+			
+
+		}
+	})
+	$.ajax({
+		type:"POST",
+		url:"../../ajax/escritorio.php?op=selectDireccionCliente",
+		data:"codigo_cliente="+$("#codigo_cliente").val(),
+		success:function(r){
+			$("#direccion_cliente").val(r);
+		}
+	})
+
 }
 
 function sumaProductos(){	

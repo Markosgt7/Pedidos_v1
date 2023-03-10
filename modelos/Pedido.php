@@ -31,12 +31,12 @@ Class Pedido
 		return ejecutarConsulta($sql);		
 	}
 
-	public function select_datos_cliente($code_customer){
-		$sql="select 
-		c.nombre ,
-		c.direccion 
-		from prueba.clientes c
-		where c.id_cliente ='$code_customer'";
+	public function select_nombre_cliente($code_customer){
+		$sql="select nombre from clientes where id_cliente ='$code_customer'";
+		return ejecutarConsulta($sql);
+	}
+	public function select_direccion_cliente($code_customer){
+		$sql="select direccion from clientes where id_cliente ='$code_customer'";
 		return ejecutarConsulta($sql);
 	}
 

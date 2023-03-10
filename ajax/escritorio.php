@@ -59,12 +59,24 @@ switch ($_GET["op"]){
 		}
 	break;
 
-	case "selectDatosClientes":
-		require_once"../modelos/Pedido.php";
+	case "selectNombreCliente":
+		require_once "../modelos/Pedido.php";
 		$pedido = new Pedido();
-		$code_customer=$_POST["id_cliente"];
-		$rspta = $pedido->select_datos_cliente($code_customer);
-
+		$code_customer=$_POST["codigo_cliente"];
+		$rspta = $pedido->select_nombre_cliente($code_customer);
+		while($reg=$rspta->fetch_object()){
+			echo $reg->nombre;
+		}
+	break;
+	case "selectDireccionCliente":
+		require_once "../modelos/Pedido.php";
+		$pedido = new Pedido();
+		$code_customer=$_POST["codigo_cliente"];
+		$rspta = $pedido->select_direccion_cliente($code_customer);
+		while($reg=$rspta->fetch_object()){
+			echo $reg->direccion;
+		}
+	break;
 
 
 	
