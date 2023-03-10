@@ -47,6 +47,24 @@ switch ($_GET["op"]){
 					echo '<option value=' . $reg->id_product . '>' . $reg->description. '</option>';
 				}
 	break;
+	case "selectClientes":
+		require_once "../modelos/Pedido.php";
+		$pedido = new Pedido();
+
+		$rspta = $pedido->select_clientes();
+		while($reg=$rspta->fetch_object())
+		{
+			echo'<option value='.$reg->id_cliente.'>'.$reg->codigo_interno.'</option>';
+		}
+	break;
+
+	case "selectDatosClientes":
+		require_once"../modelos/Pedido.php";
+		$pedido = new Pedido();
+		$code_customer=$_POST["id_cliente"];
+		$rspta = $pedido->select_datos_cliente($code_customer);
+
+		
 
 	
 }

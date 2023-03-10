@@ -35,41 +35,36 @@ if ($_SESSION['pedidos']==1)
                           <div class="panel panel-primary">
                               <div class="panel-body">
                                 <!--encabezado pedido-->
-                                <div class="row"> 
-
-                                  <div class="panel-body">
-                                    <form action="">
-                                      <div class="mb-3 form-group">
-                                        <div class="col-md-3 col-sm-12">
-                                          <label for="cliente">Código
-                                            <input type="text" placeholder="codigo">
-                                          </label>
-                                          <span>
-                                            <button type="button" class="btn btn-sm" onClick="mostrarModal()">
-                                              <i class="fa fa-search"></i>
-                                            </button>
+                               
+                                  <div class="form-group row">
+                                        <div class="col-xs-12 col-sm-4 col-lg-6">
+                                          <label for="cliente">Código</label>
+                                           <select name="codigo_cliente" id="codigo_cliente" class="form-control">
+                                              <option value="0">Seleccione</option>
+                                           </select>                                         
+                                            <span>
+                                              <button type="button" class="btn btn-sm" onClick="mostrarModal()"><i class="fa fa-search"></i></button>
                                           </span>
                                         </div>                                       
-                                      </div>
-                                      <div class="mb-3 form-group">
-                                        <div class="col-md-4 col-sm-12">
-                                            <label for="nombreCliente">Cliente
-                                              <input type="text" name="nombreCliente" placeholder="Cliente">
-                                            </label>                                         
+                                 
+                                        <div class="col-xs-12 col-sm-8 col-lg-6">
+                                            <label for="nombreCliente">Cliente</label> 
+                                              <input type="text" name="nombre_cliente" id="nombre_cliente" placeholder="Cliente" class="form-control">                                                                                    
                                         </div>
-                                      </div>
-                                      <div class="mb-3 form-group">
-                                        <div class="col-md-5 col-sm-12">
-                                            <label for="nombreCliente">Dirección
-                                              <input type="text" name="Cliente" placeholder="Dirección">
-                                            </label>                                         
-                                        </div>
-                                      </div>
-
-
-                                    </form>
                                   </div>
-                                </div>
+                                
+
+
+
+
+
+                                  <div class="form-group row">                                  
+                                    <div class="col-xs-12">                                        
+                                          <label for="direccion">Dirección</label>
+                                          <input type="text" name="Cliente" class="form-control" placeholder="Dirección">                                            
+                                    </div>
+                                  </div>
+                                
                                 <!--fin pedido-->
                                 <!--boton agregar linea-->
                                 <div class="col-md-5 col-sm-12" >
@@ -103,19 +98,19 @@ if ($_SESSION['pedidos']==1)
                                         <td scope="row" id="numRow">1</td>
                                         <td>
                                             <div class="mb-3 form-group">                                           
-                                                <select name="familias" id="familias" class="form-control">                                                  
+                                                <select name="familias[]" id="familias" class="form-control">                                                  
                                                 </select>     
                                             </div>                                                    
                                         </td>
                                         <td>
                                             <div class="mb-3 form-group">
-                                              <select name="productos" id="productos" class="form-control">                                                  
+                                              <select name="productos[]" id="productos" class="form-control">                                                  
                                               </select>                                     
                                             </div>
                                         </td>
                                         <td>
                                             <div class="mb-3 form-group">
-                                              <input type="number" class="form-control" name="cantidad" id="cantidad" placeholder="cantidad"  required>                                                                                        
+                                              <input type="number" class="form-control" name="cantidad[]" id="cantidad" placeholder="cantidad"  required>                                                                                        
                                             </div>
                                         </td>
                                         <td><button type="button" class="btn btn-sm btn-danger" onclick="eliminarLinea(1)"><i class="fa fa-trash"></i></button></td>
@@ -124,20 +119,18 @@ if ($_SESSION['pedidos']==1)
                                   </table>
 
                                 <!--observaciones-->
-                                <div class="row">
-                                  <form action="">                                  
-                                    <div class="form-group col-md-12 col-sm-12 col-lg-12">
-                                        <label for="description">Observaciones:
-                                          <input type="text" class="form-control">
-                                        </label>
-                                    </div>
-                                  </form>
-                                </div>
+                                <div class="form-group row">                                  
+                                  <div class="col-xs-12 col-md-12 col-lg-12">                                        
+                                    <label for="direccion">Observaciones</label>
+                                    <input type="text" name="Observaciones" class="form-control" placeholder="Observaciones">                                            
+                                  </div>
+                                </div>                             
 
-
-                                <div class="row">
-                                  <button type="button" class="btn btn-primary btn-sm">Enviar</button>
-                                  <button type="button" class="btn btn-danger btn-sm">Cancelar</button>
+                                <div class="row justify-content-center">
+                                  <div class="col-auto">
+                                    <button type="button" class="btn btn-primary btn-sm">Enviar</button>
+                                    <button type="button" class="btn btn-danger btn-sm">Cancelar</button>
+                                  </div>
                                 </div>
 
 

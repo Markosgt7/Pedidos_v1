@@ -1,18 +1,14 @@
 $(document).ready(function(){
+	//llamado a funciones iniciales
 	cargarProductos();
+	cargarFamilias();
+	cargarCliente();
 	
 	
-		
-	$.post("../ajax/escritorio.php?op=selectFamilias", function(r){
-		$("#familias").html(r);
-		$('#familias').selectpicker('refresh');	
-	});
-	
+	//metodos para hacer dinamicos los datos
 	$("#familias").change(function(){
-		cargarProductos();
-		
+		cargarProductos();		
 	})
-
 	$("#cantidad").change(function(){
 		sumaProductos();
 	})
@@ -24,13 +20,26 @@ $(document).ready(function(){
 	
 }
  */
+function cargarCliente(){
+	$.post("../../ajax/escritorio.php?op=selectClientes",function(r){
+		$("#codigo_cliente").html(r)
+		
+	})
+}
 
 function sumaProductos(){	
 	suma_productos = 0;
-	suma_productos =parseFloat( suma_productos) +parseFloat( $("#cantidad").val())
+	suma_productos =parseFloat(suma_productos) +parseFloat($("#cantidad").val())
 	//console.log(suma_productos)
 	$("#order_quantity").val(suma_productos)
 
+}
+
+function cargarFamilias(){		
+	$.post("../ajax/escritorio.php?op=selectFamilias", function(r){
+		$("#familias").html(r);
+		$('#familias').selectpicker('refresh');	
+	});
 }
 function cargarProductos(){
 		$.ajax({
@@ -52,16 +61,17 @@ contr=2;
 		var fila='<tr class="filasr" id="filar'+contr+'">'+
 		'<td scope="row" id="numRow">'+contr+'</td>'+
 		'<td> <div class="mb-3 form-group">'+
-		'<select name="familias" id="familias" class="form-control"></select></div></td>'+
+		'<select name="familias[]" id="familias" class="form-control"></select></div></td>'+
 		'<td> <div class="mb-3 form-group">'+
-		'<select name="productos" id="productos" class="form-control"></select></div></td>'+
+		'<select name="productos[]" id="productos" class="form-control"></select></div></td>'+
 		'<td> <div class="mb-3 form-group">'+
-		'<input type="number" class="form-control" id="cantidad" name="cantidad"></div></td>'+
+		'<input type="number" class="form-control" id="cantidad" name="cantidad[]"></div></td>'+
 		'<td> '+
 		'<button type="button" class="btn btn-sm btn-danger"  onClick="eliminarLinea('+contr+')"><i class="fa fa-trash"></i></button></td>'+
 		'</tr> ';
 		contr++;
 		$('#lineas').append(fila);
+				
 	}
 	
 	/* function evaluar(){

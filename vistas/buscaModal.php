@@ -12,8 +12,8 @@
           <form action="">
             <div class="mb-3 form-group">
                 <label for="genero" class="form-label">Código Cliente</label>
-                <select name="cod_cliente" id="cod_cliente" class="form-control" required>
-                    <option value="">Seleccionar...</option>
+                <select name="dato_buscado" id="dato_buscado" class="form-control" required>
+                    
                 </select>
             </div>
             <div class="mb-3 form-group">

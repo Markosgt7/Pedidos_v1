@@ -174,8 +174,6 @@ var cont=0;
 var contr=1;
 var detalles=0;
 $("#btnGuardar").hide();
-
-
 function agregar(iddiagnostico,enfermedad)
   {
     if (iddiagnostico!="")

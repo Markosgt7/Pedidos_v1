@@ -15,6 +15,12 @@ Class Pedido
 		$sql="SELECT * FROM familias where estado=1";
 		return ejecutarConsulta($sql);		
 	}
+
+	public function select_clientes()
+	{
+		$sql="SELECT * FROM clientes";
+		return ejecutarConsulta($sql);
+	}
 	public function select_productos($code_product)
 	{
 		$sql="select p.id_product, p.product_code, p.description 
@@ -23,6 +29,15 @@ Class Pedido
 			on f.product_code = p.product_code 
 		and p.product_code='$code_product'";
 		return ejecutarConsulta($sql);		
+	}
+
+	public function select_datos_cliente($code_customer){
+		$sql="select 
+		c.nombre ,
+		c.direccion 
+		from prueba.clientes c
+		where c.id_cliente ='$code_customer'";
+		return ejecutarConsulta($sql);
 	}
 
 	
