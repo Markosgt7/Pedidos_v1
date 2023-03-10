@@ -125,15 +125,17 @@ if ($_SESSION['pedidos']==1)
                                     <input type="text" name="Observaciones" class="form-control" placeholder="Observaciones">                                            
                                   </div>
                                 </div>                             
-
-                                <div class="row justify-content-center">
+                                
+                                
+                                <div class="form-group justify-content-end">
                                   <div class="col-auto">
                                     <button type="button" class="btn btn-primary btn-sm">Enviar</button>
                                     <button type="button" class="btn btn-danger btn-sm">Cancelar</button>
                                   </div>
                                 </div>
-
-
+                                  
+                                  
+                                
                               </div>
                             </div>
                           <!--fin codigo marcos--> 

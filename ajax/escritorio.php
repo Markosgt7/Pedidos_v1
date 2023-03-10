@@ -26,9 +26,9 @@ switch ($_GET["op"]){
 	case "selectFamilias":
 		require_once "../modelos/Pedido.php";
 		$pedido = new Pedido();
-
 		$rspta = $pedido->select_familias();
 
+		echo'<option value="0">Seleccione</option>';
 		while ($reg = $rspta->fetch_object())
 				{
 					echo '<option value=' . $reg->product_code . '>' . $reg->product_alias. '</option>';
@@ -52,6 +52,7 @@ switch ($_GET["op"]){
 		$pedido = new Pedido();
 
 		$rspta = $pedido->select_clientes();
+		echo'<option value="0">Seleccione el código</option>';
 		while($reg=$rspta->fetch_object())
 		{
 			echo'<option value='.$reg->id_cliente.'>'.$reg->codigo_interno.'</option>';
@@ -64,7 +65,7 @@ switch ($_GET["op"]){
 		$code_customer=$_POST["id_cliente"];
 		$rspta = $pedido->select_datos_cliente($code_customer);
 
-		
+
 
 	
 }

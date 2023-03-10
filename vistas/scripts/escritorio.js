@@ -12,16 +12,17 @@ $(document).ready(function(){
 	$("#cantidad").change(function(){
 		sumaProductos();
 	})
+	$("#codigo_cliente").change(function(){
+		alert("cliente cambio");	
+	})
 
 
 })
 
-/* function init(){	
-	
-}
- */
 function cargarCliente(){
 	$.post("../../ajax/escritorio.php?op=selectClientes",function(r){
+
+		$("#codigo_cliente").html("<option value=''>Seleccione</option>")
 		$("#codigo_cliente").html(r)
 		
 	})
@@ -74,23 +75,6 @@ contr=2;
 				
 	}
 	
-	/* function evaluar(){
-		if (detalles>0)
-	  {
-		$("#btnGuardarP").show();
-	  }
-	  else
-	  {
-		$("#btnGuardarP").show(); 
-		cont=0;
-	  }
-	} */
-  
-	function eliminarDetalle(indice){
-		$("#fila" + indice).remove();
-		detalles=detalles-1;
-		evaluar();
-	}
 
 	function eliminarLinea(indice){
 		$("#filar" + indice).remove();
@@ -98,4 +82,3 @@ contr=2;
 
 
 
-//init();
