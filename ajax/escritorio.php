@@ -27,7 +27,6 @@ switch ($_GET["op"]){
 		require_once "../modelos/Pedido.php";
 		$pedido = new Pedido();
 		$rspta = $pedido->select_familias();
-
 		echo'<option value="0">Seleccione</option>';
 		while ($reg = $rspta->fetch_object())
 				{

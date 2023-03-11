@@ -61,7 +61,7 @@ if ($_SESSION['pedidos']==1)
                                 
                                 <!--fin pedido-->
                                 <!--boton agregar linea-->
-                                <div class="col-lg-10 col-md-10 col-sm-12" >
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12" >
                                   <label for="">Nueva Línea </label>
                                   <span>                                  
                                     <button class="btn btn-xs btn-success" onclick="agregarLinea()">
@@ -69,14 +69,14 @@ if ($_SESSION['pedidos']==1)
                                     </button>
                                   </span>
                                 </div>
-                                <div class="col-lg-2 col-md-2 col-sm-12">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                   <label for="total">Cantidad</label>
                                   <input type="text"  value="0" name="order_quantity" id="order_quantity" class="form-control"  readonly>
                                 </div>
                                
                                 <!--inicio de tabla-->
-
-                                  <table class="table table-striped table-sm" id="lineas" >
+                                  
+                                  <table class="table table-striped table-sm table-responsive" id="lineas" >
                                     <thead>
                                       <tr>
                                         <th scope="col">Item</th>

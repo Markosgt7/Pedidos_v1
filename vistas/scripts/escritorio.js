@@ -13,8 +13,7 @@ $(document).ready(function(){
 		sumaProductos();
 	})
 	$("#codigo_cliente").change(function(){
-		 cargarNombreCliente();
-		 	
+		 cargarNombreCliente();		 	
 	})
 
 
@@ -62,7 +61,7 @@ function sumaProductos(){
 function cargarFamilias(){		
 	$.post("../ajax/escritorio.php?op=selectFamilias", function(r){
 		$("#familias").html(r);
-		$('#familias').selectpicker('refresh');	
+		//$('#familias').selectpicker('refresh');	
 	});
 }
 function cargarProductos(){
@@ -95,6 +94,7 @@ contr=2;
 		'</tr> ';
 		contr++;
 		$('#lineas').append(fila);
+		
 				
 	}
 	
